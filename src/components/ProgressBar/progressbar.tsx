@@ -1,12 +1,18 @@
-const ProgressBar = ({ progress }): JSX.Element => {
+export function ProgressBar({
+  progress,
+  bgColorStart = 'red-500',
+  txtColorStart = 'red-200',
+  bgColorEnd = 'green-400',
+  txtColorEnd = 'green-200'
+}): JSX.Element {
   return (
     <div className="w-full">
       <div className="shadow w-full bg-grey-light mt-2 rounded-full">
         <div
           className={`transition duration-500 ease-in-out h-full text-center font-semibold rounded-full ${
             progress < 70
-              ? 'bg-red-500 text-red-200'
-              : 'bg-green-400 text-green-600'
+              ? `bg-${bgColorStart} text-${txtColorStart}`
+              : `bg-${bgColorEnd} text-${txtColorEnd}`
           }`}
           style={{ width: `${progress}%` }}
         >
@@ -15,6 +21,4 @@ const ProgressBar = ({ progress }): JSX.Element => {
       </div>
     </div>
   );
-};
-
-export default ProgressBar;
+}
